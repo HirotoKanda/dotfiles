@@ -24,7 +24,8 @@ github = "romkatv/zsh-defer"
 apply = ["source"]
 
 [templates]
-defer = ""
+defer = "{{ hooks | get: \"pre\" | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks | get: \"post\" | nl }}"
+
 
 [plugins.compinit]
 inline = 'autoload -Uz compinit && zsh-defer compinit'
@@ -37,10 +38,9 @@ apply = ["source"]
 github = "zdharma-continuum/fast-syntax-highlighting.git"
 apply = ["source"]
 
-[plugins.zsh-completions]
-github = "zsh-users/zsh-completions"
+[plugins.autocomplete]
+github = "marlonrichert/zsh-autocomplete"
 apply = ["source"]
-
 
 # [plugins.zsh-better-npm-completion]
 # github = "lukechilds/zsh-better-npm-completion"
@@ -50,7 +50,7 @@ apply = ["source"]
 
 [plugins.dotfiles-sync]
 local = "~/dotfiles/zsh"
-use = ["sync.zsh", "alias.zsh"]
+use = ["sync.zsh"]
 apply = ["source"]
 
 [plugins.dotfiles-defers]

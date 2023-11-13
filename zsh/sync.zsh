@@ -4,6 +4,7 @@ neofetch
 
 # Initialize Starship
 eval "$(starship init zsh)"
+znap source marlonrichert/zsh-autocomplete
 setopt globdots 
 
 # reboot shell
