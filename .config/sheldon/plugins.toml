@@ -38,7 +38,7 @@ github = "zdharma-continuum/fast-syntax-highlighting.git"
 apply = ["source"]
 
 [plugins.zsh-completions]
-github = "marlonrichert/zsh-autocomplete"
+github = "zsh-users/zsh-completions"
 apply = ["source"]
 
 
@@ -48,11 +48,11 @@ apply = ["source"]
 # [plugins.aws_zsh_completer]
 # remote = "https://raw.githubusercontent.com/aws/aws-cli/v2/bin/aws_zsh_completer.sh"
 
+[plugins.dotfiles-sync]
+local = "~/dotfiles/zsh"
+use = ["sync.zsh", "alias.zsh"]
+apply = ["source"]
+
 [plugins.dotfiles-defers]
 local = "~/dotfiles/zsh"
 use = ["{!sync,*}.zsh"]
-
-[plugins.dotfiles-sync]
-local = "~/dotfiles/zsh"
-use = ["sync.zsh"]
-apply = ["source"]
