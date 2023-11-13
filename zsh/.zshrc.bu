@@ -1,0 +1,58 @@
+# Executes commands at the start of an interactive session.
+neofetch
+
+# Zinit
+source <(curl -sL init.zshell.dev); zzinit
+
+    #plugins
+zinit load zsh-users/zsh-autosuggestions
+zinit load zdharma/fast-syntax-highlighting
+zinit load marlonrichert/zsh-autocomplete
+
+# Initialize Starship
+eval "$(starship init zsh)"
+
+# Customize to your needs...　
+alias reboot='exec $SHELL -l'
+
+#application alias
+alias firefox="open -a Firefox"
+
+#LaTeX Template commands
+alias homework="cp -r /Users/jai/uni/tm/hw homework"
+
+brew update
+setopt globdots 
+
+# pyenv
+PYENV_ROOT=~/.pyenv
+export PATH=$PYENV_ROOT/bin:$PATH
+export PATH="~/.pyenv/versions/anaconda3-2023.09-0/bin/:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# brew doctor 対策
+alias brew="env PATH=${PATH/\/Users\/jai/\.pyenv\/versions/} brew"
+
+#adb環境
+export PATH=$PATH:/Users/jai/Library/Android/sdk/platform-tools
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/jai/.pyenv/versions/anaconda3-5.3.1/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/jai/.pyenv/versions/anaconda3-5.3.1/etc/profile.d/conda.sh" ]; then
+        . "/Users/jai/.pyenv/versions/anaconda3-5.3.1/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/jai/.pyenv/versions/anaconda3-5.3.1/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+export GS_OPTIONS=-dNEWPDF=true
+
+
+
