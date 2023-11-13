@@ -1,20 +1,16 @@
 # Executes commands at the start of an interactive session.
 neofetch
+[[ -r ~/Repos/znap/znap.zsh ]] ||
+    git clone --depth 1 -- \
+        https://github.com/marlonrichert/zsh-snap.git ~/Repos/znap
+source ~/Repos/znap/znap.zsh  # Start Znap
+
 # echo ""
 
 # Initialize Starship
 eval "$(starship init zsh)"
 znap source marlonrichert/zsh-autocomplete
 setopt globdots 
-
-# reboot shell
-alias reboot='exec $SHELL -l'
-
-#application alias
-alias firefox="open -a Firefox"
-
-#LaTeX Template commands
-alias homework="cp -r /Users/jai/uni/tm/hw homework"
 
 # brew doctor 対策
 alias brew="env PATH=${PATH/\/Users\/jai/\.pyenv\/versions/} brew"
