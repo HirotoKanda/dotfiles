@@ -7,25 +7,27 @@ github = 'romkatv/zsh-defer'
 apply = ['source']
 
 [templates]
-defer = '{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}'
+defer = "" #"{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks?.post | nl }}"
 
 [plugins.compinit]
 inline = 'autoload -Uz compinit && zsh-defer compinit'
 
-[plugins.colors]
-inline = 'autoload -Uz colors && zsh-defer colors'
+[plugins.fast-syntax-highlighting]
+github = 'zdharma-continuum/fast-syntax-highlighting'
+apply = ['source']
 
 [plugins.zsh-autosuggestions]
 github = 'zsh-users/zsh-autosuggestions'
-apply = ['defer']
-
-[plugins.fast-syntax-highlighting]
-github = 'zdharma-continuum/fast-syntax-highlighting'
-apply = ['defer']
+apply = ['source']
 
 [plugins.zsh-autocomplete]
 github = 'marlonrichert/zsh-autocomplete'
-apply = ['defer']
+apply = ['source']
+
+[plugins.enhancd]
+github = "b4b4r07/enhancd"
+apply = ['source']
+use = ['init.sh']
 
 [plugins.dotfiles-sync]
 local = '~/dotfiles/zsh/sync'

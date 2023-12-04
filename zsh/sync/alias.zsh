@@ -1,3 +1,7 @@
+# terminal color
+# LSCOLORS=exfxcxdxbxegedabagacad
+alias ls='lsd -l'
+
 # reboot shell
 alias reboot='exec $SHELL -l'
 

@@ -1,37 +1,80 @@
-window:
-  dynamic_title: true
-  dimensions:
-    columns: 150
-    lines: 40
-  opacity: 0.95
-  padding:
-    x: 5
-    y: 0
+live_config_reload: true
 
-cursor:
-  style:
-    shape: Block #(Block, Underline, Beam)
-    blinking: Always
-  unfocused_hollow: true
-  blink_interval: 400
+window:
+  # デカめがいいので
+  dimensions:
+    columns: 200
+    lines: 60
+
+  # macは角丸ウインドウなので余白をとったほうが良い
+  padding:
+    x: 8
+    y: 4
+
+# 少し透過
+window:
+  opacity: 0.6
 
 scrolling:
+  # consoleのlogを10000行まで保持
   history: 10000
+
+  # スクロール量は3行
+  multiplier: 3
 
 env:
   TERM: xterm-256color
 
-live_config_reload: true
+import:
+# uncomment the flavour you want below:
+#  - ~/.config/alacritty/catppuccin/catppuccin-mocha.yml
+#  - ~/.config/alacritty/catppuccin/catppuccin-macchiato.yml
+  - ~/.config/alacritty/catppuccin/catppuccin-frappe.yml
+#  - ~/.config/alacritty/catppuccin/catppuccin-latte.yml
 
+colors:
+  primary:
+    background: "#000918"
+
+# フォント設定
+# 僕はCicaを利用しているのでお好きなように
 font:
-  size: 20
   normal:
-    family: 'JetBrainsMonoNL Nerd Font'
+    family: 'JetBrainsMono NF'
+
+  size: 14.0
 
   offset:
-    x: 0
     y: 1
-  glyph_offset:
-    x: 0
-    y: 0
-  draw_bold_text_with_bright_colors: true
+
+# 基本はデフォルトのzshですが、tmuxを起動するように
+# また起動ずみのtmuxがあればattachにする
+shell:
+  program: /bin/zsh
+#  args:
+#    - -l
+#    - -c
+#    - "/opt/homebrew/bin/tmux a -t 0 || /opt/homebrew/bin/tmux -u"
+
+# キーバインド
+key_bindings:
+  # wikiのrecommnedをそのままコピーしただけ
+  - {
+      key: Comma,
+      mods: Command,
+      command:
+        {
+          program: 'sh',
+          args: ['-c', 'open ~/.config/alacritty/alacritty.yml'],
+        },
+    }
+  - { key: N, mods: Command, action: SpawnNewInstance }
+  - { key: Space, mods: Alt, chars: ' ' }
+  - { key: Back, mods: Super, chars: "\x15" } # delete word/line
+  - { key: Left, mods: Alt, chars: "\x1bb" } # one word left
+  - { key: Right, mods: Alt, chars: "\x1bf" } # one word right
+  - { key: Left, mods: Command, chars: "\x1bOH", mode: AppCursor } # Home
+  - { key: Right, mods: Command, chars: "\x1bOF", mode: AppCursor } # End
+  # tmuxのprefixをCtrl-Qにしているので、その設定
+  # これがないとtmuxのprefixが効かずに、Alacrittyのキーバインドに持っていかれるっぽい？
+  - { key: Q, mods: Control, chars: "\x11" } # tmux prefix
