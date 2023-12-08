@@ -2,12 +2,19 @@
 # LSCOLORS=exfxcxdxbxegedabagacad
 alias ls='lsd -l'
 alias tree='lsd -l --tree'
+alias vim='nvim'
 
 function custom_cd()
 {
-  \cd $@ && ls
+  \cd "$@" && ls
 }
 alias cd='custom_cd'
+
+function custom_mv()
+{
+  \mv "$@" && ls
+}
+alias mv='custom_mv'
 
 # reboot shell
 alias reboot='exec $SHELL -l'

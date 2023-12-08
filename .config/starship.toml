@@ -42,7 +42,7 @@ Ubuntu = "  " # nf-linux-ubuntu
 Debian = "  " # nf-linux-debian
 
 [directory]
-truncation_length = 15
+truncation_length = 20
 truncation_symbol = ' '                                 # nf-fa-folder_open
 truncate_to_repo = false
 home_symbol = ' ~'                                      # nf-fa-home

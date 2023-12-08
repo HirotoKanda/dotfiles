@@ -1,6 +1,5 @@
 # Executes commands at the start of an interactive session.
 neofetch
-lsd -l
 # Initialize Starship
 eval "$(starship init zsh)"
 setopt globdots 
